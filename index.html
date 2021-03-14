@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Montez&family=Ubuntu+Mono&display=swap" rel="stylesheet" />
 
+    <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./styles/common.css" />
 </head>
 
@@ -97,6 +98,41 @@
                 </div>
             </div>
         </div>
+
+        <!-- Post Area -->
+        <div class="postButtonArea">
+            <button onclick="location.href='./html/postslist.html'" class="postButtons" type="button">All Posts</button>
+            <button id="createPostBtn" class="postButtons" type="button">Create Post</button>
+        </div>
+
+        <!-- Post Modal -->
+        <div id="createPostModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span id="closeCreatePost" class="close-icon"><i class="fa fa-times fa-lg"
+                            aria-hidden="true"></i></span>
+                    <h3 class="modal-heading">Pen Your Post</h3>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" placeholder="Enter title of your post"
+                                required="true" />
+                        </div>
+                        <div class="form-group">
+                            <label for="contents">Contents</label>
+                            <textarea type="text" class="form-control contents" id="contents" rows="10"
+                                placeholder="Enter the contents of your post" required="true"></textarea>
+                        </div>
+                        <div class="create-btn-div">
+                            <button type="submit" class="btn btn-success" id="createPostApi">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
