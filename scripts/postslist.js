@@ -1,30 +1,29 @@
+/* Get Reference of Delecte Icon */
 var deletePostModal = document.getElementById("deletePostModal");
 var cancelDelete = document.getElementById("cancelDelete");
 var confirmDelete = document.getElementById("confirmDelete");
 
-// Get the button that opens the modal
 var deleteIcons = document.querySelectorAll(".delete-icon");
 var deleteIconsArray = Array.from(deleteIcons);
 
-// Get the dot icons
+/* Get Reference of Dot Icon */
 var dots = document.querySelectorAll(".dots");
 var dotsArray = Array.from(dots);
 
-// Get the No button that closes the modal
-// var closeDeletePostModal = document.getElementById("closeDeletePostModal");
-var selectedPost;
+/* Open Delete Post Modal */
 openDeletePostModal = (deletePostModal, clickedIcon) => {
   selectedPost = "";
   openModal(deletePostModal);
   selectedPost = clickedIcon.closest(".post");
 };
 
+/* Delete Post */
 deletePost = () => {
   selectedPost.remove();
   closeModal(deletePostModal);
 };
 
-// Updating Session storage before redirecting to post.html page to view the clicked post
+/* Update Session Storage to view the clicked post */
 navigateToPost = postThread => {
   var post = postThread.closest(".post");
   var author = post.querySelector(".username p").textContent.trim();
@@ -35,20 +34,24 @@ navigateToPost = postThread => {
   sessionStorage.setItem("postContent", postContent);
   window.location.href = "../html/post.html";
 };
-// Event Listeners
+
+/* Event Handler for Delete Icon */
 deleteIconsArray.map(deleteIcon => {
   deleteIcon.addEventListener("click", e =>
     openDeletePostModal(deletePostModal, e.target)
   );
 });
-dotsArray.map(dot => {
-  dot.addEventListener("click", e => navigateToPost(e.target));
-});
 
-window.addEventListener("click", function(event) {
+/* Event Handler for Post Modal */
+window.addEventListener("click", function (event) {
   if (event.target == deletePostModal) {
     deletePostModal.style.display = "none";
   }
+});
+
+/* Event Handler to navigate to a Post */
+dotsArray.map(dot => {
+  dot.addEventListener("click", e => navigateToPost(e.target));
 });
 
 cancelDelete.addEventListener("click", () => closeModal(deletePostModal));
